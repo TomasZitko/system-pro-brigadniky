@@ -1,0 +1,50 @@
+{
+  "name": "brigadnikos-manager-portal",
+  "version": "1.0.0",
+  "description": "BrigadníkOS Manager Portal - Shift Planning & Payroll Management",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "@mui/material": "^5.14.18",
+    "@mui/icons-material": "^5.14.18",
+    "@mui/x-date-pickers": "^6.18.3",
+    "@mui/x-data-grid": "^6.18.3",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "axios": "^1.6.2",
+    "react-query": "^3.39.3",
+    "zustand": "^4.4.7",
+    "date-fns": "^3.0.0",
+    "react-big-calendar": "^1.8.5",
+    "recharts": "^2.10.3",
+    "qrcode.react": "^3.1.0",
+    "react-toastify": "^9.1.3",
+    "react-hook-form": "^7.48.2",
+    "yup": "^1.3.3",
+    "@hookform/resolvers": "^3.3.2",
+    "dayjs": "^1.11.10"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/react-big-calendar": "^1.8.9",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.5",
+    "typescript": "^5.3.2"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "eslintConfig": {
+    "extends": ["react-app"]
+  },
+  "browserslist": {
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+  }
+}
