@@ -1,0 +1,45 @@
+{
+  "name": "brigadnikos-monorepo",
+  "version": "1.0.0",
+  "description": "BrigadníkOS - All-in-One Czech Workforce Platform",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "web-manager",
+    "web-hq",
+    "web-accountant",
+    "mobile-worker"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm run install:backend && npm run install:web && npm run install:mobile",
+    "install:backend": "cd backend && npm install",
+    "install:web": "cd web-manager && npm install && cd ../web-hq && npm install && cd ../web-accountant && npm install",
+    "install:mobile": "cd mobile-worker && npm install",
+    "dev:backend": "cd backend && npm run start:dev",
+    "dev:manager": "cd web-manager && npm start",
+    "dev:hq": "cd web-hq && npm start",
+    "dev:accountant": "cd web-accountant && npm start",
+    "dev:mobile": "cd mobile-worker && npm start",
+    "build:all": "npm run build:backend && npm run build:web",
+    "build:backend": "cd backend && npm run build",
+    "build:web": "cd web-manager && npm run build && cd ../web-hq && npm run build && cd ../web-accountant && npm run build",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "migration:generate": "cd backend && npm run migration:generate",
+    "migration:run": "cd backend && npm run migration:run",
+    "test": "npm run test:backend && npm run test:web",
+    "test:backend": "cd backend && npm test",
+    "test:web": "cd web-manager && npm test"
+  },
+  "keywords": [
+    "workforce-management",
+    "dpp",
+    "dpč",
+    "czech-labor-law",
+    "saas",
+    "multi-tenant"
+  ],
+  "author": "BrigadníkOS Team",
+  "license": "PROPRIETARY"
+}

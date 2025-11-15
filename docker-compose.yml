@@ -1,0 +1,126 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: brigadnikos-postgres
+    environment:
+      POSTGRES_DB: brigadnikos
+      POSTGRES_USER: brigadnikos
+      POSTGRES_PASSWORD: brigadnikos_dev_password
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init:/docker-entrypoint-initdb.d
+    networks:
+      - brigadnikos-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U brigadnikos"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: brigadnikos-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - brigadnikos-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: brigadnikos-backend
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://brigadnikos:brigadnikos_dev_password@postgres:5432/brigadnikos
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: dev_jwt_secret_change_in_production
+      JWT_REFRESH_SECRET: dev_refresh_secret_change_in_production
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - brigadnikos-network
+    command: npm run start:dev
+
+  web-manager:
+    build:
+      context: ./web-manager
+      dockerfile: Dockerfile
+    container_name: brigadnikos-web-manager
+    environment:
+      REACT_APP_API_URL: http://localhost:3000
+      PORT: 3001
+    ports:
+      - "3001:3001"
+    depends_on:
+      - backend
+    volumes:
+      - ./web-manager:/app
+      - /app/node_modules
+    networks:
+      - brigadnikos-network
+
+  web-hq:
+    build:
+      context: ./web-hq
+      dockerfile: Dockerfile
+    container_name: brigadnikos-web-hq
+    environment:
+      REACT_APP_API_URL: http://localhost:3000
+      PORT: 3002
+    ports:
+      - "3002:3002"
+    depends_on:
+      - backend
+    volumes:
+      - ./web-hq:/app
+      - /app/node_modules
+    networks:
+      - brigadnikos-network
+
+  web-accountant:
+    build:
+      context: ./web-accountant
+      dockerfile: Dockerfile
+    container_name: brigadnikos-web-accountant
+    environment:
+      REACT_APP_API_URL: http://localhost:3000
+      PORT: 3003
+    ports:
+      - "3003:3003"
+    depends_on:
+      - backend
+    volumes:
+      - ./web-accountant:/app
+      - /app/node_modules
+    networks:
+      - brigadnikos-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  brigadnikos-network:
+    driver: bridge
