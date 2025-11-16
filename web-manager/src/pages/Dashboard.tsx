@@ -1,34 +1,36 @@
 import { Grid, Paper, Typography, Box } from '@mui/material';
 import { People, Schedule, AccessTime, TrendingUp } from '@mui/icons-material';
 import { useQuery } from 'react-query';
+import { useTranslation } from 'react-i18next';
 import { workersService, shiftsService, attendanceService } from '../services/api';
 
 export default function Dashboard() {
+  const { t } = useTranslation(['pages', 'common']);
   const { data: workers } = useQuery('workers', () => workersService.getAll());
   const { data: shifts } = useQuery('shifts', () => shiftsService.getAll());
   const { data: attendance } = useQuery('attendance', () => attendanceService.getAll());
 
   const stats = [
     {
-      title: 'Total Workers',
+      title: t('pages:dashboard.stats.totalWorkers'),
       value: workers?.data?.length || 0,
       icon: <People sx={{ fontSize: 40 }} />,
       color: '#1976d2',
     },
     {
-      title: 'Shifts This Month',
+      title: t('pages:dashboard.stats.shiftsThisMonth'),
       value: shifts?.data?.length || 0,
       icon: <Schedule sx={{ fontSize: 40 }} />,
       color: '#dc004e',
     },
     {
-      title: 'Pending Approvals',
+      title: t('pages:dashboard.stats.pendingApprovals'),
       value: attendance?.data?.filter((a: any) => a.status === 'clocked_out').length || 0,
       icon: <AccessTime sx={{ fontSize: 40 }} />,
       color: '#ff9800',
     },
     {
-      title: 'Active Now',
+      title: t('pages:dashboard.stats.activeNow'),
       value: attendance?.data?.filter((a: any) => a.status === 'clocked_in').length || 0,
       icon: <TrendingUp sx={{ fontSize: 40 }} />,
       color: '#4caf50',
@@ -38,7 +40,7 @@ export default function Dashboard() {
   return (
     <Box>
       <Typography variant="h4" gutterBottom>
-        Dashboard
+        {t('pages:dashboard.title')}
       </Typography>
 
       <Grid container spacing={3}>
@@ -72,13 +74,12 @@ export default function Dashboard() {
         <Grid item xs={12} md={8}>
           <Paper sx={{ p: 3 }}>
             <Typography variant="h6" gutterBottom>
-              Quick Actions
+              {t('pages:dashboard.quickActions.title')}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              • Create new shift<br />
-              • Approve pending attendance<br />
-              • Run payroll calculation<br />
-              • Generate ČSSZ export
+              • {t('pages:dashboard.quickActions.createShift')}<br />
+              • {t('pages:dashboard.quickActions.approveAttendance')}<br />
+              • {t('pages:dashboard.quickActions.generatePayroll')}
             </Typography>
           </Paper>
         </Grid>
@@ -86,12 +87,10 @@ export default function Dashboard() {
         <Grid item xs={12} md={4}>
           <Paper sx={{ p: 3 }}>
             <Typography variant="h6" gutterBottom>
-              Upcoming Tasks
+              {t('pages:dashboard.recentActivity.title')}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              • Payroll deadline: 5 days<br />
-              • 3 shift applications pending<br />
-              • 12 attendance records to approve
+              {t('pages:dashboard.recentActivity.noActivity')}
             </Typography>
           </Paper>
         </Grid>

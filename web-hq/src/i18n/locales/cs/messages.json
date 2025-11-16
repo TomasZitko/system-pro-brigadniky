@@ -1,0 +1,12 @@
+{
+  "toast": {
+    "success": "Operace proběhla úspěšně",
+    "error": "Něco se pokazilo",
+    "warning": "Upozornění",
+    "info": "Informace",
+    "saved": "Úspěšně uloženo",
+    "deleted": "Úspěšně smazáno",
+    "updated": "Úspěšně aktualizováno",
+    "created": "Úspěšně vytvořeno"
+  }
+}

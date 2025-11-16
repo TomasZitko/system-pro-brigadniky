@@ -9,10 +9,13 @@ import {
   Box,
   Alert,
 } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { authService } from '../services/api';
 import { useAuthStore } from '../store/authStore';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 export default function LoginPage() {
+  const { t } = useTranslation(['common', 'auth']);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -32,7 +35,7 @@ export default function LoginPage() {
       login(user, accessToken);
       navigate('/');
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Login failed');
+      setError(err.response?.data?.message || t('auth:login.loginFailed'));
     } finally {
       setLoading(false);
     }
@@ -49,11 +52,14 @@ export default function LoginPage() {
         }}
       >
         <Paper elevation={3} sx={{ p: 4, width: '100%' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+            <LanguageSwitcher />
+          </Box>
           <Typography component="h1" variant="h4" align="center" gutterBottom>
-            BrigadníkOS
+            {t('common:appName')}
           </Typography>
           <Typography variant="h6" align="center" color="textSecondary" gutterBottom>
-            Manager Portal
+            {t('common:managerPortal')}
           </Typography>
 
           {error && (
@@ -67,7 +73,7 @@ export default function LoginPage() {
               margin="normal"
               required
               fullWidth
-              label="Email"
+              label={t('auth:login.email')}
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -78,7 +84,7 @@ export default function LoginPage() {
               margin="normal"
               required
               fullWidth
-              label="Password"
+              label={t('auth:login.password')}
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -91,7 +97,7 @@ export default function LoginPage() {
               sx={{ mt: 3, mb: 2 }}
               disabled={loading}
             >
-              {loading ? 'Logging in...' : 'Login'}
+              {loading ? `${t('common:common.loading')}` : t('auth:login.loginButton')}
             </Button>
 
             <Alert severity="info" sx={{ mt: 2 }}>

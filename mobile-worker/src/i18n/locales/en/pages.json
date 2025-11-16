@@ -1,0 +1,280 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back, {{name}}!",
+    "stats": {
+      "totalWorkers": "Total Workers",
+      "activeWorkers": "Active Workers",
+      "shiftsThisMonth": "Shifts This Month",
+      "pendingApprovals": "Pending Approvals",
+      "activeNow": "Active Now",
+      "totalRevenue": "Total Revenue",
+      "avgSatisfaction": "Avg Satisfaction"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "createShift": "Create Shift",
+      "addWorker": "Add Worker",
+      "approveAttendance": "Approve Attendance",
+      "generatePayroll": "Generate Payroll"
+    },
+    "recentActivity": {
+      "title": "Recent Activity",
+      "noActivity": "No recent activity"
+    }
+  },
+  "workers": {
+    "title": "Workers",
+    "addWorker": "Add Worker",
+    "editWorker": "Edit Worker",
+    "deleteWorker": "Delete Worker",
+    "workerDetails": "Worker Details",
+    "searchPlaceholder": "Search workers...",
+    "filters": {
+      "all": "All",
+      "active": "Active",
+      "inactive": "Inactive",
+      "dpp": "DPP",
+      "dpc": "DPČ"
+    },
+    "table": {
+      "id": "ID",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "contractType": "Contract Type",
+      "status": "Status",
+      "hireDate": "Hire Date",
+      "actions": "Actions"
+    },
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "birthDate": "Birth Date",
+      "nationalId": "National ID",
+      "address": "Address",
+      "city": "City",
+      "zipCode": "ZIP Code",
+      "bankAccount": "Bank Account",
+      "contractType": "Contract Type",
+      "hourlyRate": "Hourly Rate",
+      "maxHoursPerMonth": "Max Hours/Month",
+      "position": "Position",
+      "department": "Department",
+      "notes": "Notes"
+    },
+    "contractTypes": {
+      "dpp": "Agreement to Perform Work (DPP)",
+      "dpc": "Agreement to Perform Activity (DPČ)"
+    },
+    "messages": {
+      "createSuccess": "Worker created successfully",
+      "createFailed": "Failed to create worker",
+      "updateSuccess": "Worker updated successfully",
+      "updateFailed": "Failed to update worker",
+      "deleteSuccess": "Worker deleted successfully",
+      "deleteFailed": "Failed to delete worker",
+      "confirmDelete": "Are you sure you want to delete this worker?"
+    }
+  },
+  "shifts": {
+    "title": "Shifts",
+    "createShift": "Create Shift",
+    "editShift": "Edit Shift",
+    "deleteShift": "Delete Shift",
+    "shiftDetails": "Shift Details",
+    "calendar": "Calendar",
+    "list": "List",
+    "views": {
+      "day": "Day",
+      "week": "Week",
+      "month": "Month",
+      "agenda": "Agenda"
+    },
+    "form": {
+      "title": "Shift Title",
+      "description": "Description",
+      "location": "Location",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "assignWorker": "Assign Worker",
+      "position": "Position",
+      "requiredWorkers": "Required Workers",
+      "isRecurring": "Recurring",
+      "recurrencePattern": "Recurrence Pattern"
+    },
+    "status": {
+      "scheduled": "Scheduled",
+      "inProgress": "In Progress",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "messages": {
+      "createSuccess": "Shift created successfully",
+      "createFailed": "Failed to create shift",
+      "updateSuccess": "Shift updated successfully",
+      "updateFailed": "Failed to update shift",
+      "deleteSuccess": "Shift deleted successfully",
+      "deleteFailed": "Failed to delete shift",
+      "confirmDelete": "Are you sure you want to delete this shift?"
+    }
+  },
+  "attendance": {
+    "title": "Attendance",
+    "approve": "Approve",
+    "reject": "Reject",
+    "pending": "Pending Approval",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "table": {
+      "worker": "Worker",
+      "shift": "Shift",
+      "date": "Date",
+      "clockIn": "Clock In",
+      "clockOut": "Clock Out",
+      "totalHours": "Total Hours",
+      "breakTime": "Break Time",
+      "overtime": "Overtime",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "details": {
+      "title": "Attendance Details",
+      "location": "Location",
+      "gpsCoordinates": "GPS Coordinates",
+      "notes": "Notes",
+      "approvedBy": "Approved By",
+      "approvedAt": "Approved At"
+    },
+    "messages": {
+      "approveSuccess": "Attendance approved successfully",
+      "approveFailed": "Failed to approve attendance",
+      "rejectSuccess": "Attendance rejected",
+      "rejectFailed": "Failed to reject attendance",
+      "bulkApproveSuccess": "Selected records approved successfully",
+      "bulkApproveFailed": "Failed to approve records"
+    }
+  },
+  "payroll": {
+    "title": "Payroll",
+    "periods": "Periods",
+    "createPeriod": "Create Period",
+    "calculate": "Calculate",
+    "lock": "Lock",
+    "unlock": "Unlock",
+    "export": {
+      "title": "Export",
+      "csszXml": "ČSSZ XML",
+      "csv": "CSV for Accounting",
+      "pdf": "PDF Summary"
+    },
+    "period": {
+      "start": "Period Start",
+      "end": "Period End",
+      "status": "Status",
+      "totalAmount": "Total Amount",
+      "totalWorkers": "Total Workers",
+      "totalHours": "Total Hours"
+    },
+    "status": {
+      "draft": "Draft",
+      "calculated": "Calculated",
+      "locked": "Locked",
+      "paid": "Paid"
+    },
+    "table": {
+      "worker": "Worker",
+      "contractType": "Contract Type",
+      "regularHours": "Regular Hours",
+      "overtimeHours": "Overtime",
+      "weekendHours": "Weekend Hours",
+      "nightHours": "Night Hours",
+      "holidayHours": "Holiday Hours",
+      "basePay": "Base Pay",
+      "weekendBonus": "Weekend Bonus",
+      "nightBonus": "Night Bonus",
+      "holidayBonus": "Holiday Bonus",
+      "grossPay": "Gross Pay",
+      "netPay": "Net Pay",
+      "actions": "Actions"
+    },
+    "bonuses": {
+      "weekend": "Weekend Bonus (+{{percent}}%)",
+      "night": "Night Bonus (+{{percent}}%)",
+      "holiday": "Holiday Bonus (+{{percent}}%)"
+    },
+    "messages": {
+      "createSuccess": "Payroll period created successfully",
+      "createFailed": "Failed to create period",
+      "calculateSuccess": "Payroll calculated successfully",
+      "calculateFailed": "Failed to calculate payroll",
+      "lockSuccess": "Period locked successfully",
+      "lockFailed": "Failed to lock period",
+      "exportSuccess": "Export completed successfully",
+      "exportFailed": "Export failed",
+      "downloadStarted": "Download started..."
+    }
+  },
+  "gamification": {
+    "title": "Gamification",
+    "achievements": "Achievements",
+    "badges": "Badges",
+    "leaderboard": "Leaderboard",
+    "points": "Points",
+    "level": "Level",
+    "badges": {
+      "earlyBird": "Early Bird",
+      "nightOwl": "Night Owl",
+      "weekendWarrior": "Weekend Warrior",
+      "perfectMonth": "Perfect Month",
+      "teamPlayer": "Team Player",
+      "customerFavorite": "Customer Favorite"
+    },
+    "badgeDescriptions": {
+      "earlyBird": "Completed 10+ morning shifts",
+      "nightOwl": "Completed 10+ night shifts",
+      "weekendWarrior": "Completed 20+ weekend shifts",
+      "perfectMonth": "100% attendance for a month",
+      "teamPlayer": "Helped 5+ colleagues",
+      "customerFavorite": "Average rating 4.8+"
+    },
+    "stats": {
+      "totalPoints": "Total Points",
+      "rank": "Rank",
+      "completedShifts": "Completed Shifts",
+      "avgRating": "Avg Rating",
+      "totalBadges": "Total Badges"
+    }
+  },
+  "feedback": {
+    "title": "Feedback",
+    "generateQr": "Generate QR Code",
+    "qrCode": "Customer QR Code",
+    "reviews": "Reviews",
+    "avgRating": "Average Rating",
+    "totalReviews": "Total Reviews",
+    "table": {
+      "worker": "Worker",
+      "customer": "Customer",
+      "rating": "Rating",
+      "comment": "Comment",
+      "date": "Date",
+      "shift": "Shift"
+    },
+    "filters": {
+      "all": "All Reviews",
+      "excellent": "Excellent (5⭐)",
+      "good": "Good (4⭐)",
+      "average": "Average (3⭐)",
+      "poor": "Poor (1-2⭐)"
+    },
+    "messages": {
+      "qrGenerateSuccess": "QR code generated successfully",
+      "qrGenerateFailed": "Failed to generate QR code"
+    }
+  }
+}

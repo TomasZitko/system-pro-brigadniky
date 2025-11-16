@@ -18,11 +18,13 @@ import {
 } from '@mui/material';
 import { Add, Calculate, Lock, Download, Assessment } from '@mui/icons-material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { useTranslation } from 'react-i18next';
 import { payrollService } from '../services/api';
 import { toast } from 'react-toastify';
 import { format } from 'date-fns';
 
 export default function PayrollPage() {
+  const { t } = useTranslation(['pages', 'common']);
   const [open, setOpen] = useState(false);
   const [selectedPeriod, setSelectedPeriod] = useState<any>(null);
   const [formData, setFormData] = useState({
@@ -43,31 +45,31 @@ export default function PayrollPage() {
   const handleCreatePeriod = async () => {
     try {
       await payrollService.createPeriod(formData);
-      toast.success('Payroll period created!');
+      toast.success(t('pages:payroll.messages.createSuccess'));
       setOpen(false);
       refetch();
     } catch (error) {
-      toast.error('Failed to create period');
+      toast.error(t('pages:payroll.messages.createFailed'));
     }
   };
 
   const handleCalculate = async (periodId: string) => {
     try {
       await payrollService.calculate(periodId);
-      toast.success('Payroll calculated successfully!');
+      toast.success(t('pages:payroll.messages.calculateSuccess'));
       refetch();
     } catch (error) {
-      toast.error('Failed to calculate payroll');
+      toast.error(t('pages:payroll.messages.calculateFailed'));
     }
   };
 
   const handleLock = async (periodId: string) => {
     try {
       await payrollService.lock(periodId);
-      toast.success('Payroll period locked!');
+      toast.success(t('pages:payroll.messages.lockSuccess'));
       refetch();
     } catch (error) {
-      toast.error('Failed to lock period');
+      toast.error(t('pages:payroll.messages.lockFailed'));
     }
   };
 
@@ -80,9 +82,9 @@ export default function PayrollPage() {
       link.setAttribute('download', `cssz_vpdpp_${periodId}.xml`);
       document.body.appendChild(link);
       link.click();
-      toast.success('ČSSZ XML downloaded!');
+      toast.success(t('pages:payroll.messages.exportSuccess'));
     } catch (error) {
-      toast.error('Failed to export ČSSZ XML');
+      toast.error(t('pages:payroll.messages.exportFailed'));
     }
   };
 
@@ -95,53 +97,53 @@ export default function PayrollPage() {
       link.setAttribute('download', `payroll_${periodId}.csv`);
       document.body.appendChild(link);
       link.click();
-      toast.success('CSV downloaded!');
+      toast.success(t('pages:payroll.messages.downloadStarted'));
     } catch (error) {
-      toast.error('Failed to export CSV');
+      toast.error(t('pages:payroll.messages.exportFailed'));
     }
   };
 
   const columns: GridColDef[] = [
     {
       field: 'worker',
-      headerName: 'Worker',
+      headerName: t('pages:payroll.table.worker'),
       width: 150,
       valueGetter: (params) =>
         `${params.row.worker?.firstName} ${params.row.worker?.lastName}`,
     },
     {
       field: 'totalRegularHours',
-      headerName: 'Regular Hours',
+      headerName: t('pages:payroll.table.regularHours'),
       width: 120,
       valueGetter: (params) => params.value?.toFixed(2) || '0.00',
     },
     {
       field: 'basePay',
-      headerName: 'Base Pay',
+      headerName: t('pages:payroll.table.basePay'),
       width: 120,
       valueGetter: (params) => `${params.value?.toFixed(2)} Kč`,
     },
     {
       field: 'weekendSupplement',
-      headerName: 'Weekend +',
+      headerName: t('pages:payroll.table.weekendBonus'),
       width: 120,
       valueGetter: (params) => `${params.value?.toFixed(2)} Kč`,
     },
     {
       field: 'nightSupplement',
-      headerName: 'Night +',
+      headerName: t('pages:payroll.table.nightBonus'),
       width: 120,
       valueGetter: (params) => `${params.value?.toFixed(2)} Kč`,
     },
     {
       field: 'holidaySupplement',
-      headerName: 'Holiday +',
+      headerName: t('pages:payroll.table.holidayBonus'),
       width: 120,
       valueGetter: (params) => `${params.value?.toFixed(2)} Kč`,
     },
     {
       field: 'grossPay',
-      headerName: 'Gross Pay',
+      headerName: t('pages:payroll.table.grossPay'),
       width: 150,
       valueGetter: (params) => `${params.value?.toFixed(2)} Kč`,
       renderCell: (params) => (
@@ -152,7 +154,7 @@ export default function PayrollPage() {
     },
     {
       field: 'ytdHours',
-      headerName: 'YTD Hours',
+      headerName: t('pages:payroll.period.totalHours'),
       width: 100,
       valueGetter: (params) => params.value?.toFixed(2) || '0.00',
     },
@@ -161,15 +163,14 @@ export default function PayrollPage() {
   return (
     <Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-        <Typography variant="h4">Payroll & Compliance</Typography>
+        <Typography variant="h4">{t('pages:payroll.title')}</Typography>
         <Button variant="contained" startIcon={<Add />} onClick={() => setOpen(true)}>
-          Create Period
+          {t('pages:payroll.createPeriod')}
         </Button>
       </Box>
 
       <Alert severity="info" sx={{ mb: 3 }}>
-        🔥 <strong>KILLER FEATURE:</strong> One-click ČSSZ VPDPP XML export with
-        automatic Czech Labor Law compliance!
+        {t('pages:payroll.export.csszXml')} & {t('pages:payroll.export.csv')}
       </Alert>
 
       <Grid container spacing={3}>
@@ -183,7 +184,7 @@ export default function PayrollPage() {
                     {format(new Date(period.periodEnd), 'dd/MM/yyyy')}
                   </Typography>
                   <Chip
-                    label={period.isLocked ? 'Locked' : 'Open'}
+                    label={period.isLocked ? t('pages:payroll.status.locked') : t('pages:payroll.status.draft')}
                     color={period.isLocked ? 'error' : 'success'}
                   />
                 </Box>
@@ -197,7 +198,7 @@ export default function PayrollPage() {
                         startIcon={<Calculate />}
                         onClick={() => handleCalculate(period.id)}
                       >
-                        Calculate
+                        {t('pages:payroll.calculate')}
                       </Button>
                       <Button
                         size="small"
@@ -205,7 +206,7 @@ export default function PayrollPage() {
                         startIcon={<Lock />}
                         onClick={() => handleLock(period.id)}
                       >
-                        Lock
+                        {t('pages:payroll.lock')}
                       </Button>
                     </>
                   )}
@@ -219,7 +220,7 @@ export default function PayrollPage() {
                         startIcon={<Download />}
                         onClick={() => handleExportCSSZ(period.id)}
                       >
-                        ČSSZ XML
+                        {t('pages:payroll.export.csszXml')}
                       </Button>
                       <Button
                         size="small"
@@ -227,7 +228,7 @@ export default function PayrollPage() {
                         startIcon={<Download />}
                         onClick={() => handleExportCSV(period.id)}
                       >
-                        CSV
+                        {t('pages:payroll.export.csv')}
                       </Button>
                     </>
                   )}
@@ -238,7 +239,7 @@ export default function PayrollPage() {
                     startIcon={<Assessment />}
                     onClick={() => setSelectedPeriod(period)}
                   >
-                    View
+                    {t('common:actions.view')}
                   </Button>
                 </Box>
               </CardContent>
@@ -262,12 +263,12 @@ export default function PayrollPage() {
       )}
 
       <Dialog open={open} onClose={() => setOpen(false)} maxWidth="sm" fullWidth>
-        <DialogTitle>Create Payroll Period</DialogTitle>
+        <DialogTitle>{t('pages:payroll.createPeriod')}</DialogTitle>
         <DialogContent>
           <TextField
             fullWidth
             margin="normal"
-            label="Period Start"
+            label={t('pages:payroll.period.start')}
             type="date"
             InputLabelProps={{ shrink: true }}
             value={formData.periodStart}
@@ -278,7 +279,7 @@ export default function PayrollPage() {
           <TextField
             fullWidth
             margin="normal"
-            label="Period End"
+            label={t('pages:payroll.period.end')}
             type="date"
             InputLabelProps={{ shrink: true }}
             value={formData.periodEnd}
@@ -288,9 +289,9 @@ export default function PayrollPage() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpen(false)}>Cancel</Button>
+          <Button onClick={() => setOpen(false)}>{t('common:actions.cancel')}</Button>
           <Button onClick={handleCreatePeriod} variant="contained">
-            Create
+            {t('common:actions.create')}
           </Button>
         </DialogActions>
       </Dialog>

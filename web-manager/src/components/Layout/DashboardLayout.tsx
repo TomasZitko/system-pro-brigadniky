@@ -3,25 +3,28 @@ import { Box, AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, L
 import { Menu as MenuIcon, Dashboard as DashboardIcon, People as PeopleIcon, Schedule as ScheduleIcon, AccessTime as AccessTimeIcon, Payment as PaymentIcon, EmojiEvents as EmojiEventsIcon, Feedback as FeedbackIcon, Logout as LogoutIcon } from '@mui/icons-material';
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../store/authStore';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 const drawerWidth = 240;
 
-const menuItems = [
-  { text: 'Dashboard', icon: <DashboardIcon />, path: '/' },
-  { text: 'Workers', icon: <PeopleIcon />, path: '/workers' },
-  { text: 'Shifts', icon: <ScheduleIcon />, path: '/shifts' },
-  { text: 'Attendance', icon: <AccessTimeIcon />, path: '/attendance' },
-  { text: 'Payroll', icon: <PaymentIcon />, path: '/payroll' },
-  { text: 'Gamification', icon: <EmojiEventsIcon />, path: '/gamification' },
-  { text: 'Feedback', icon: <FeedbackIcon />, path: '/feedback' },
-];
-
 export default function DashboardLayout() {
+  const { t } = useTranslation(['common']);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { user, logout } = useAuthStore();
+
+  const menuItems = [
+    { text: t('navigation.dashboard'), icon: <DashboardIcon />, path: '/' },
+    { text: t('navigation.workers'), icon: <PeopleIcon />, path: '/workers' },
+    { text: t('navigation.shifts'), icon: <ScheduleIcon />, path: '/shifts' },
+    { text: t('navigation.attendance'), icon: <AccessTimeIcon />, path: '/attendance' },
+    { text: t('navigation.payroll'), icon: <PaymentIcon />, path: '/payroll' },
+    { text: t('navigation.gamification'), icon: <EmojiEventsIcon />, path: '/gamification' },
+    { text: t('navigation.feedback'), icon: <FeedbackIcon />, path: '/feedback' },
+  ];
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -36,7 +39,7 @@ export default function DashboardLayout() {
     <div>
       <Toolbar>
         <Typography variant="h6" noWrap component="div">
-          BrigadníkOS
+          {t('appName')}
         </Typography>
       </Toolbar>
       <Divider />
@@ -60,7 +63,7 @@ export default function DashboardLayout() {
             <ListItemIcon>
               <LogoutIcon />
             </ListItemIcon>
-            <ListItemText primary="Logout" />
+            <ListItemText primary={t('navigation.logout')} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -86,9 +89,10 @@ export default function DashboardLayout() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Manager Portal
+            {t('managerPortal')}
           </Typography>
-          <Typography variant="body1">
+          <LanguageSwitcher />
+          <Typography variant="body1" sx={{ ml: 2 }}>
             {user?.firstName} {user?.lastName}
           </Typography>
         </Toolbar>

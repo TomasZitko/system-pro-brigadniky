@@ -1,0 +1,12 @@
+{
+  "toast": {
+    "success": "Operation successful",
+    "error": "Something went wrong",
+    "warning": "Warning",
+    "info": "Information",
+    "saved": "Saved successfully",
+    "deleted": "Deleted successfully",
+    "updated": "Updated successfully",
+    "created": "Created successfully"
+  }
+}

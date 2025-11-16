@@ -1,0 +1,280 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Vítejte zpět, {{name}}!",
+    "stats": {
+      "totalWorkers": "Celkem brigádníků",
+      "activeWorkers": "Aktivních brigádníků",
+      "shiftsThisMonth": "Směn tento měsíc",
+      "pendingApprovals": "Čekajících schválení",
+      "activeNow": "Nyní aktivních",
+      "totalRevenue": "Celkový příjem",
+      "avgSatisfaction": "Průměrná spokojenost"
+    },
+    "quickActions": {
+      "title": "Rychlé akce",
+      "createShift": "Vytvořit směnu",
+      "addWorker": "Přidat brigádníka",
+      "approveAttendance": "Schválit docházku",
+      "generatePayroll": "Vygenerovat mzdy"
+    },
+    "recentActivity": {
+      "title": "Nedávná aktivita",
+      "noActivity": "Žádná nedávná aktivita"
+    }
+  },
+  "workers": {
+    "title": "Brigádníci",
+    "addWorker": "Přidat brigádníka",
+    "editWorker": "Upravit brigádníka",
+    "deleteWorker": "Smazat brigádníka",
+    "workerDetails": "Detail brigádníka",
+    "searchPlaceholder": "Hledat brigádníky...",
+    "filters": {
+      "all": "Všichni",
+      "active": "Aktivní",
+      "inactive": "Neaktivní",
+      "dpp": "DPP",
+      "dpc": "DPČ"
+    },
+    "table": {
+      "id": "ID",
+      "name": "Jméno",
+      "email": "Email",
+      "phone": "Telefon",
+      "contractType": "Typ smlouvy",
+      "status": "Stav",
+      "hireDate": "Datum nástupu",
+      "actions": "Akce"
+    },
+    "form": {
+      "firstName": "Jméno",
+      "lastName": "Příjmení",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "birthDate": "Datum narození",
+      "nationalId": "Rodné číslo",
+      "address": "Adresa",
+      "city": "Město",
+      "zipCode": "PSČ",
+      "bankAccount": "Číslo účtu",
+      "contractType": "Typ smlouvy",
+      "hourlyRate": "Hodinová sazba",
+      "maxHoursPerMonth": "Max. hodin za měsíc",
+      "position": "Pozice",
+      "department": "Oddělení",
+      "notes": "Poznámky"
+    },
+    "contractTypes": {
+      "dpp": "Dohoda o provedení práce (DPP)",
+      "dpc": "Dohoda o pracovní činnosti (DPČ)"
+    },
+    "messages": {
+      "createSuccess": "Brigádník byl úspěšně vytvořen",
+      "createFailed": "Vytvoření brigádníka se nezdařilo",
+      "updateSuccess": "Brigádník byl úspěšně aktualizován",
+      "updateFailed": "Aktualizace brigádníka se nezdařila",
+      "deleteSuccess": "Brigádník byl úspěšně smazán",
+      "deleteFailed": "Smazání brigádníka se nezdařilo",
+      "confirmDelete": "Opravdu chcete smazat tohoto brigádníka?"
+    }
+  },
+  "shifts": {
+    "title": "Směny",
+    "createShift": "Vytvořit směnu",
+    "editShift": "Upravit směnu",
+    "deleteShift": "Smazat směnu",
+    "shiftDetails": "Detail směny",
+    "calendar": "Kalendář",
+    "list": "Seznam",
+    "views": {
+      "day": "Den",
+      "week": "Týden",
+      "month": "Měsíc",
+      "agenda": "Agenda"
+    },
+    "form": {
+      "title": "Název směny",
+      "description": "Popis",
+      "location": "Místo",
+      "startDate": "Datum začátku",
+      "endDate": "Datum konce",
+      "startTime": "Čas začátku",
+      "endTime": "Čas konce",
+      "assignWorker": "Přiřadit brigádníka",
+      "position": "Pozice",
+      "requiredWorkers": "Počet brigádníků",
+      "isRecurring": "Opakující se",
+      "recurrencePattern": "Vzorec opakování"
+    },
+    "status": {
+      "scheduled": "Naplánováno",
+      "inProgress": "Probíhá",
+      "completed": "Dokončeno",
+      "cancelled": "Zrušeno"
+    },
+    "messages": {
+      "createSuccess": "Směna byla úspěšně vytvořena",
+      "createFailed": "Vytvoření směny se nezdařilo",
+      "updateSuccess": "Směna byla úspěšně aktualizována",
+      "updateFailed": "Aktualizace směny se nezdařila",
+      "deleteSuccess": "Směna byla úspěšně smazána",
+      "deleteFailed": "Smazání směny se nezdařilo",
+      "confirmDelete": "Opravdu chcete smazat tuto směnu?"
+    }
+  },
+  "attendance": {
+    "title": "Docházka",
+    "approve": "Schválit",
+    "reject": "Zamítnout",
+    "pending": "Čekající na schválení",
+    "approved": "Schváleno",
+    "rejected": "Zamítnuto",
+    "table": {
+      "worker": "Brigádník",
+      "shift": "Směna",
+      "date": "Datum",
+      "clockIn": "Příchod",
+      "clockOut": "Odchod",
+      "totalHours": "Celkem hodin",
+      "breakTime": "Přestávka",
+      "overtime": "Přesčas",
+      "status": "Stav",
+      "actions": "Akce"
+    },
+    "details": {
+      "title": "Detail docházky",
+      "location": "Místo",
+      "gpsCoordinates": "GPS souřadnice",
+      "notes": "Poznámky",
+      "approvedBy": "Schválil",
+      "approvedAt": "Datum schválení"
+    },
+    "messages": {
+      "approveSuccess": "Docházka byla úspěšně schválena",
+      "approveFailed": "Schválení docházky se nezdařilo",
+      "rejectSuccess": "Docházka byla zamítnuta",
+      "rejectFailed": "Zamítnutí docházky se nezdařilo",
+      "bulkApproveSuccess": "Vybrané záznamy byly úspěšně schváleny",
+      "bulkApproveFailed": "Hromadné schválení se nezdařilo"
+    }
+  },
+  "payroll": {
+    "title": "Mzdy",
+    "periods": "Období",
+    "createPeriod": "Vytvořit období",
+    "calculate": "Vypočítat",
+    "lock": "Uzamknout",
+    "unlock": "Odemknout",
+    "export": {
+      "title": "Export",
+      "csszXml": "ČSSZ XML",
+      "csv": "CSV pro účetní software",
+      "pdf": "PDF přehled"
+    },
+    "period": {
+      "start": "Začátek období",
+      "end": "Konec období",
+      "status": "Stav",
+      "totalAmount": "Celková částka",
+      "totalWorkers": "Počet brigádníků",
+      "totalHours": "Celkem hodin"
+    },
+    "status": {
+      "draft": "Koncept",
+      "calculated": "Vypočítáno",
+      "locked": "Uzamčeno",
+      "paid": "Vyplaceno"
+    },
+    "table": {
+      "worker": "Brigádník",
+      "contractType": "Typ smlouvy",
+      "regularHours": "Běžné hodiny",
+      "overtimeHours": "Přesčas",
+      "weekendHours": "Víkendové hodiny",
+      "nightHours": "Noční hodiny",
+      "holidayHours": "Sváteční hodiny",
+      "basePay": "Základní mzda",
+      "weekendBonus": "Víkendový příplatek",
+      "nightBonus": "Noční příplatek",
+      "holidayBonus": "Sváteční příplatek",
+      "grossPay": "Hrubá mzda",
+      "netPay": "Čistá mzda",
+      "actions": "Akce"
+    },
+    "bonuses": {
+      "weekend": "Víkendový příplatek (+{{percent}}%)",
+      "night": "Noční příplatek (+{{percent}}%)",
+      "holiday": "Sváteční příplatek (+{{percent}}%)"
+    },
+    "messages": {
+      "createSuccess": "Období mzd bylo úspěšně vytvořeno",
+      "createFailed": "Vytvoření období se nezdařilo",
+      "calculateSuccess": "Mzdy byly úspěšně vypočítány",
+      "calculateFailed": "Výpočet mezd se nezdařil",
+      "lockSuccess": "Období bylo úspěšně uzamčeno",
+      "lockFailed": "Uzamčení období se nezdařilo",
+      "exportSuccess": "Export byl úspěšně dokončen",
+      "exportFailed": "Export se nezdařil",
+      "downloadStarted": "Stahování začalo..."
+    }
+  },
+  "gamification": {
+    "title": "Gamifikace",
+    "achievements": "Achievementy",
+    "badges": "Odznaky",
+    "leaderboard": "Žebříček",
+    "points": "Body",
+    "level": "Úroveň",
+    "badges": {
+      "earlyBird": "Ranní ptáče",
+      "nightOwl": "Noční sova",
+      "weekendWarrior": "Víkendový válečník",
+      "perfectMonth": "Dokonalý měsíc",
+      "teamPlayer": "Týmový hráč",
+      "customerFavorite": "Oblíbenec zákazníků"
+    },
+    "badgeDescriptions": {
+      "earlyBird": "Dokončeno 10+ ranních směn",
+      "nightOwl": "Dokončeno 10+ nočních směn",
+      "weekendWarrior": "Dokončeno 20+ víkendových směn",
+      "perfectMonth": "100% docházka po celý měsíc",
+      "teamPlayer": "Pomohl 5+ kolegům",
+      "customerFavorite": "Průměrné hodnocení 4.8+"
+    },
+    "stats": {
+      "totalPoints": "Celkem bodů",
+      "rank": "Pořadí",
+      "completedShifts": "Dokončené směny",
+      "avgRating": "Průměrné hodnocení",
+      "totalBadges": "Celkem odznaků"
+    }
+  },
+  "feedback": {
+    "title": "Zpětná vazba",
+    "generateQr": "Vygenerovat QR kód",
+    "qrCode": "QR kód pro zákazníky",
+    "reviews": "Hodnocení",
+    "avgRating": "Průměrné hodnocení",
+    "totalReviews": "Celkem hodnocení",
+    "table": {
+      "worker": "Brigádník",
+      "customer": "Zákazník",
+      "rating": "Hodnocení",
+      "comment": "Komentář",
+      "date": "Datum",
+      "shift": "Směna"
+    },
+    "filters": {
+      "all": "Všechna hodnocení",
+      "excellent": "Vynikající (5⭐)",
+      "good": "Dobré (4⭐)",
+      "average": "Průměrné (3⭐)",
+      "poor": "Špatné (1-2⭐)"
+    },
+    "messages": {
+      "qrGenerateSuccess": "QR kód byl úspěšně vygenerován",
+      "qrGenerateFailed": "Generování QR kódu se nezdařilo"
+    }
+  }
+}
